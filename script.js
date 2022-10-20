@@ -2,6 +2,12 @@ const cards = document.querySelectorAll(".card");
 let matchedPairs = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
+let count = 0;
+let messageEl = document.getElementById("message-el");
+console.log(messageEl);
+let winEl = document.getElementById("win-el");
+let startBtn = document.getElementById("start-btn");
+startBtn.addEventListener("click", shuffleCards);
 
 function flipCard(evt) { // take an event object's as a scoped variable
   const clickedCard = evt.target; // set the event's target DOM element as a variable
@@ -18,14 +24,19 @@ function flipCard(evt) { // take an event object's as a scoped variable
       let cardOneImg = cardOne.querySelector(".back-view img").src; // query the elements inside cardOne to get the value of the img src, such as `img-2.png`, and set that as the value of cardOneImg
       let cardTwoImg = cardTwo.querySelector(".back-view img").src; // query the elements inside cardOne to get the value of the img src, such as `img-2.png`, and set that as the value of cardTwoImg
       matchCards(cardOneImg, cardTwoImg); // now check the images by filename to see if they are a match!
+      return count++;
   }
 }
-
+let matchingGame;
 function matchCards(img1, img2) {
   if (img1 === img2) { // this code will run if the card images match
+    count++;
     matchedPairs++; // if the card images match, we can increment the global `matchedPairs` variable by 1 match
+    count = count * 2;
+    matchingGame  = "Good job! You have matched " + matchedPairs + " pairs!";
+    messageEl.textContent = matchingGame;
     if (matchedPairs == 8) { // if your number of matches is 8, you've made all the matches! Game Won!
-        console.log('YOU WIN!');
+       winEl.innerHTML = "Congratulation!!  YOU WIN in " + count + " flips!";
         return; // for now, lets call this game over, end this function and do nothing else.
     }
     // everything below will execute if the game has not yet been won...
@@ -62,5 +73,5 @@ function matchCards(img1, img2) {
         card.addEventListener("click", flipCard); // add a click event listener to the current card to execute a function `flipCard` when clicked
       });
 }
-shuffleCards();
+//shuffleCards();
 
