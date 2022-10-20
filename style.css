@@ -12,12 +12,45 @@
     min-height: 100vh;
     background: #6563FF;
   }
+  #inst{
+    position: absolute;
+    top: 0px;
+    color: white;
+    padding: 10px;
+  }
+
+  #start-btn{
+    position: absolute;
+    top: 40px;
+    color: blue;
+    padding: 10px;
+    font-weight: bold;
+    font-size: large;
+  }
+  #message-el{
+    position: absolute;
+    bottom: 8%;
+    left: 40%;
+    color:white;
+    padding: 10px;
+    font-weight: bold; 
+  }
+
+  #win-el{
+    position: absolute;
+    bottom: 3%;
+    left: 40%;
+    font-size: large;
+    font-weight: bold;
+    color: #fff;
+  }
   
   .game-board {
     padding: 25px;
     border-radius: 10px;
     background: #F8F8F8;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
   }
   .cards,
 .card,
@@ -125,3 +158,5 @@
       max-width: 35px;
     }
   }
+
+  
